@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Chat Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chat Assistant</h1>
+        <div class="chatbox">
+            <div id="chat-container"></div>
+            <input type="text" id="user-query" placeholder="Ask your question..." />
+            
+        </div>
+        <button id="submit-btn">Ask</button>
+    </div>
+
+    <script>
+        document.getElementById("submit-btn").addEventListener("click", async function () {
+            const query = document.getElementById("user-query").value;
+            if (!query) return;
+
+            addChatMessage("You: " + query, "user");
+
+            const response = await fetch(`/query?query=${encodeURIComponent(query)}`);
+            const data = await response.json();
+
+            addChatMessage("Assistant: " + data.response, "assistant");
+
+            document.getElementById("user-query").value = "";
+        });
+
+        function addChatMessage(message, sender) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("chat-message", sender);
+            messageElement.textContent = message;
+            document.getElementById("chat-container").appendChild(messageElement);
+        }
+    </script>
+</body>
+</html>
