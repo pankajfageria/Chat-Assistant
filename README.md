@@ -1,4 +1,4 @@
-# Chat_Assistant
+# Chat-Assistant
 DESCRIPTION:
 This project is a Python-based chat assistant that interacts with an SQLite database to answer user queries. The assistant processes natural language queries, converts them into SQL, fetches relevant data, and provides a formatted response. The system is built using Flask for handling HTTP requests and SQLite3 as the database engine.
 # Chat Assistant for SQLite Database
@@ -39,7 +39,7 @@ This project is a Python-based chat assistant that interacts with an SQLite data
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/pankajfageria/Chat-assistant-sqlite.git
+   git clone https://github.com/pankajfageria/Chat-assistant.git
    cd Chat-assistant
    ```
 2. **Install dependencies:**
